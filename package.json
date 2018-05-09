@@ -2,6 +2,12 @@
   "name": "bulma-calendar",
   "version": "1.3.0",
   "description": "Display a calendar for date selection or for planning management, in different colors and sizes",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
   "main": "dist/bulma-calendar.sass",
   "scripts": {
     "build": "gulp"
@@ -57,6 +63,8 @@
     "README.md"
   ],
   "dependencies": {
-    "camelcase": "^4.1.0"
+    "babel-preset-es2015": "^6.24.1",
+    "camelcase": "^4.1.0",
+    "tsd": "^0.6.5"
   }
 }
