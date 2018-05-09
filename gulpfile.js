@@ -87,13 +87,13 @@ gulp.task('clean:styles', function(callback) {
 gulp.task('build:scripts', function() {
   return gulp
     .src([paths.src + paths.jsPattern])
-    .pipe(sourcemaps.init({
-      loadMaps: true
-    }))
+    // .pipe(sourcemaps.init({
+    //   loadMaps: false
+    // }))
     .pipe(rollup({
         plugins: [babel({
           babelrc: false,
-          sourceMaps: true,
+          sourceMaps: false,
           exclude: 'node_modules/**',
           presets: [
             ["@babel/preset-env",  {
@@ -115,7 +115,7 @@ gulp.task('build:scripts', function() {
     .pipe(minify().on('error', function(err) {
       gutil.log(gutil.colors.red('[Error]'), err.toString())
     }))
-    .pipe(sourcemaps.write())
+    //.pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dest));
 });
 

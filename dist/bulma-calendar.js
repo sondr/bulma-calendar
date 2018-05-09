@@ -103,6 +103,15 @@ var datepicker_langs = {
     weekdays: ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'],
     weekdaysShort: ['日', '月', '火', '水', '木', '金', '土']
   },
+  nb: {
+    weekStart: 2,
+    previousMonth: 'Forrige Måned',
+    nextMonth: 'Neste Måned',
+    months: ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'],
+    monthsShort: ['jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+    weekdays: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'],
+    weekdaysShort: ['søn', 'man', 'tir', 'ons', 'tor', 'fre', 'lør']
+  },
   nl: {
     weekStart: 1,
     previousMonth: 'Vorige Maand',
@@ -175,7 +184,8 @@ var datepicker_langs = {
   }
 };
 
-Element.prototype.addEventsListener = function(events, listener = void 0) {
+Element.prototype.addEventsListener = function(events, listener) {
+  if(listener == undefined) listener = void 0;
   if (!Array.isArray(events)) {
     events = [events];
   }
