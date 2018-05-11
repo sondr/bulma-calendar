@@ -184,13 +184,13 @@ Element.prototype.addEventsListener = function(events, listener) {
     events = [events];
   }
 
-  for(var i = 0, len = events.length; i < len; i++){
-    this.addEventListener(events[i], listener);
-  }
+  // for(var i = 0, len = events.length; i < len; i++){
+  //   this.addEventListener(events[i], listener);
+  // }
 
-  // events.forEach(event => {
-  //   this.addEventListener(event, listener);
-  // });
+  events.forEach(event => {
+    this.addEventListener(event, listener);
+  });
 }
 
 class datePicker {

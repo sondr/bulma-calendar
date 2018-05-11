@@ -4,11 +4,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;_e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }return _arr;
+  }return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
 var datepicker_langs = {
   ar: {
@@ -191,18 +227,20 @@ var datepicker_langs = {
 };
 
 Element.prototype.addEventsListener = function (events, listener) {
+  var _this = this;
+
   if (listener == undefined) listener = void 0;
   if (!Array.isArray(events)) {
     events = [events];
   }
 
-  for (var i = 0, len = events.length; i < len; i++) {
-    this.addEventListener(events[i], listener);
-  }
+  // for(var i = 0, len = events.length; i < len; i++){
+  //   this.addEventListener(events[i], listener);
+  // }
 
-  // events.forEach(event => {
-  //   this.addEventListener(event, listener);
-  // });
+  events.forEach(function (event) {
+    _this.addEventListener(event, listener);
+  });
 };
 
 var datePicker = function () {
@@ -246,7 +284,6 @@ var datePicker = function () {
    * @method _init
    * @return {datePicker} Current plugin instance
    */
-
 
   _createClass(datePicker, [{
     key: '_init',
@@ -321,16 +358,16 @@ var datePicker = function () {
   }, {
     key: '_bindEvents',
     value: function _bindEvents() {
-      var _this = this;
+      var _this2 = this;
 
       // Bind event to element in order to display/hide datePicker on click
       this.element.addEventsListener(this._clickEvent, function (e) {
         e.preventDefault();
 
-        if (_this.open) {
-          _this.hide();
+        if (_this2.open) {
+          _this2.hide();
         } else {
-          _this.show();
+          _this2.show();
         }
       });
 
@@ -339,14 +376,14 @@ var datePicker = function () {
         if (this.datePickerCloseButton) {
           this.datePickerCloseButton.addEventsListener(this._clickEvent, function (e) {
             e.preventDefault();
-            _this.hide();
+            _this2.hide();
           });
         }
         // Bind close event on overlay based on options
         if (this.options.closeOnOverlayClick) {
           this.datePickerOverlay.addEventsListener(this._clickEvent, function (e) {
             e.preventDefault();
-            _this.hide();
+            _this2.hide();
           });
         }
       }
@@ -354,21 +391,21 @@ var datePicker = function () {
       // Bind year navigation events
       this.datePickerCalendarNavPreviousYear.addEventsListener(this._clickEvent, function (e) {
         e.preventDefault();
-        _this.prevYear();
+        _this2.prevYear();
       });
       this.datePickerCalendarNavNextYear.addEventsListener(this._clickEvent, function (e) {
         e.preventDefault();
-        _this.nextYear();
+        _this2.nextYear();
       });
 
       // Bind month navigation events
       this.datePickerCalendarNavPreviousMonth.addEventsListener(this._clickEvent, function (e) {
         e.preventDefault();
-        _this.prevMonth();
+        _this2.prevMonth();
       });
       this.datePickerCalendarNavNextMonth.addEventsListener(this._clickEvent, function (e) {
         e.preventDefault();
-        _this.nextMonth();
+        _this2.nextMonth();
       });
     }
 
@@ -381,10 +418,10 @@ var datePicker = function () {
   }, {
     key: '_bindDaysEvents',
     value: function _bindDaysEvents() {
-      var _this2 = this;
+      var _this3 = this;
 
       [].forEach.call(this.datePickerCalendarDays, function (calendarDay) {
-        calendarDay.addEventsListener(_this2._clickEvent, function (e) {
+        calendarDay.addEventsListener(_this3._clickEvent, function (e) {
           e.preventDefault();
           if (!e.currentTarget.classList.contains('is-disabled')) {
             var date = e.currentTarget.dataset.date.split('-');
@@ -394,12 +431,12 @@ var datePicker = function () {
                 month = _date[1],
                 day = _date[2];
 
-            if (typeof _this2.options.onSelect != 'undefined' && _this2.options.onSelect != null && _this2.options.onSelect) {
-              _this2.options.onSelect(new Date(year, month, day));
+            if (typeof _this3.options.onSelect != 'undefined' && _this3.options.onSelect != null && _this3.options.onSelect) {
+              _this3.options.onSelect(new Date(year, month, day));
             }
-            _this2.element.value = _this2._getFormatedDate(new Date(year, month, day), _this2.options.dateFormat);
-            if (_this2.options.closeOnSelect) {
-              _this2.hide();
+            _this3.element.value = _this3._getFormatedDate(new Date(year, month, day), _this3.options.dateFormat);
+            if (_this3.options.closeOnSelect) {
+              _this3.hide();
             }
           }
         });

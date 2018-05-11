@@ -90,25 +90,27 @@ gulp.task('build:scripts', function () {
     // .pipe(sourcemaps.init({
     //   loadMaps: false
     // }))
-    .pipe(rollup({
-      plugins: [babel({
-        babelrc: false,
-        sourceMaps: true,
-        exclude: 'node_modules/**',
-        presets: [
-          ["@babel/preset-env",
-            {
-              "targets": {
-                "browsers": ["last 2 versions"]
-              }
-            }
-          ]
-        ]
-      })]
-    }, {
-        format: gutil.env.jsFormat ? gutil.env.jsFormat : 'umd',
-        name: camelCase(package.name)
-      }))
+    // .pipe(rollup({
+    //   plugins: [babel({
+    //     babelrc: false,
+    //     sourceMaps: true,
+    //     exclude: 'node_modules/**',
+    //     presets: [
+    //       ["env",
+    //         {
+    //           "targets": {
+    //             "browsers": ["last 2 versions"]
+    //           }
+    //         }
+    //       ]
+    //     ]
+    //   })]
+    // }, {
+    //     format: gutil.env.jsFormat ? gutil.env.jsFormat : 'umd',
+    //     name: camelCase(package.name)
+    //   }))
+    .pipe(babel({ presets: ['es2015'] }))
+    .pipe(babel())
     .pipe(concat(globalJsFile))
     .pipe(gulp.dest(paths.dest))
     .pipe(concat(distJsFile))

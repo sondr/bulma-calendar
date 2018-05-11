@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/Wikiki/bulma-calendar#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.39",
-    "@babel/preset-env": "^7.0.0-beta.39",
-    "babel-core": "^7.0.0-beta.3",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "babel-core": "^6.26.3",
     "bulma": "^0.6.2",
     "camelcase": "^4.1.0",
     "del": "^3.0.0",
